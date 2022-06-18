@@ -16,7 +16,14 @@ module.exports = {
   module: {
     rules: [
       { test: /\.(js|jsx)$/, loader: "babel-loader", exclude: /node_modules/ },
-      { test: /\.(ts|tsx)$/, loader: "ts-loader", exclude: /node_modules/ },
+      {
+        test: /\.(ts|tsx)$/,
+        loader: "ts-loader",
+        options: {
+          transpileOnly: true, // 只进行语法转换,不进行类型校验,提高构建速度
+        },
+        exclude: /node_modules/,
+      },
     ],
   },
   plugins: [
